@@ -37,3 +37,14 @@ type Comment struct {
 	ID         int64     `json:"id"`          // 评论id
 	User       user.User `json:"user"`        // 评论用户信息
 }
+
+type MessageSendEvent struct {
+	UserId     int64  `json:"user_id,omitempty"`
+	ToUserId   int64  `json:"to_user_id,omitempty"`
+	MsgContent string `json:"msg_content,omitempty"`
+}
+
+type MessagePushEvent struct {
+	FromUserId int64  `json:"user_id,omitempty"`
+	MsgContent string `json:"msg_content,omitempty"`
+}
