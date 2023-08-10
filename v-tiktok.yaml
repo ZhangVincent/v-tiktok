@@ -1,0 +1,15 @@
+Env: dev # 环境，线上环境：prod、测试环境：dev
+BaseUrl: localhost:8080 # app域名，IP值需要查看自己的局域网
+LogFile: static/logs/ # 日志文件
+videoPath: static/video/  # 根路径下的静态文件目录，可配置绝对路径
+
+# 数据库连接
+DB:
+  Url: username:password@tcp(localhost:3306)/vtiktok?charset=utf8mb4&parseTime=True&loc=Local
+  MaxIdleConns: 50
+  MaxOpenConns: 200
+
+Jwt:
+  SignKey: v-tiktok-2023-signkey
+  ExpireDays: 1
+  Issuer: v-tiktok-2023-issuer
