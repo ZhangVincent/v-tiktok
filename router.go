@@ -43,7 +43,7 @@ func initRouter(r *gin.Engine) {
 	// 发布
 	publishGroup := apiRouter.Group("/publish/")
 	{
-		publishGroup.POST("/action/", controller.Publish)
+		publishGroup.POST("/action/", controller.PublishAction)
 		publishGroup.GET("/list/", controller.PublishList)
 	}
 

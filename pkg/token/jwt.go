@@ -16,10 +16,10 @@ type UserClaims struct {
 	*jwt.RegisteredClaims
 
 	Name   string `json:"name"`
-	UserId string `json:"user_id"`
+	UserId int64  `json:"user_id"`
 }
 
-func CreateToken(name, userId string) (string, error) {
+func CreateToken(name string, userId int64) (string, error) {
 	var (
 		jwtConf   = config.Instance.Jwt
 		expiredAt = time.Now().Add(time.Duration(jwtConf.ExpireDays) * 24 * 60 * 60 * time.Second)
@@ -35,25 +35,6 @@ func CreateToken(name, userId string) (string, error) {
 	})
 	return claims.SignedString([]byte(jwtConf.SignKey))
 }
-
-//func GetUser(c gin.Context) (user *UserClaims) {
-//	token, err := getToken(c)
-//	if strs.IsNotBlank(token) && err == nil {
-//		user, _ = parseToken(token)
-//	}
-//	return
-//}
-//
-//func getToken(c gin.Context) (string, error) {
-//	token := c.PostForm(constants.UserTokenHeader)
-//	if strs.IsNotBlank(token) {
-//		if strings.HasPrefix(token, "Bearer ") {
-//			return token[7:], nil
-//		}
-//		return token, nil
-//	}
-//	return "", constants.TokenNotFoundErr
-//}
 
 func ParseToken(tokenString string) (*UserClaims, error) {
 	jwtConf := config.Instance.Jwt

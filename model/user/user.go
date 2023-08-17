@@ -34,7 +34,7 @@ type LoginResponse struct {
 
 type InfoRequest struct {
 	Token  string `json:"token" form:"token" binding:"required"`      // 用户鉴权token
-	UserID string `json:"user_id"  form:"user_id" binding:"required"` // 用户id
+	UserID int64  `json:"user_id"  form:"user_id" binding:"required"` // 用户id
 }
 
 type InfoResponse struct {

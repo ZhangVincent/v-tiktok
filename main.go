@@ -10,7 +10,7 @@ import (
 	"time"
 	"v-tiktok/model"
 	"v-tiktok/model/config"
-	"v-tiktok/pkg/message"
+	"v-tiktok/pkg/redis"
 	"v-tiktok/pkg/sqls"
 )
 
@@ -44,10 +44,15 @@ func init() {
 		logrus.Error(err)
 	}
 
+	// 连接redis
+	if err := redis.Open(conf.Redis); err != nil {
+		logrus.Error(err)
+	}
+
 }
 
 func main() {
-	go message.RunMessageServer()
+	defer redis.Close()
 
 	Router()
 }

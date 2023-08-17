@@ -1,4 +1,4 @@
-// @description TODO
+// @description comment模型
 // @author zkp15
 // @date 2023/8/10 21:26
 // @version 1.0
@@ -8,11 +8,11 @@ package comment
 import "v-tiktok/model/user"
 
 type ActionRequest struct {
-	ActionType  string `json:"action_type"`            // 1-发布评论，2-删除评论
-	CommentID   string `json:"comment_id,omitempty"`   // 要删除的评论id，在action_type=2的时候使用
-	CommentText string `json:"comment_text,omitempty"` // 用户填写的评论内容，在action_type=1的时候使用
-	Token       string `json:"token"`                  // 用户鉴权token
-	VideoID     string `json:"video_id"`               // 视频id
+	ActionType  string `json:"action_type" form:"action_type" binding:"required"` // 1-发布评论，2-删除评论
+	CommentID   int64  `json:"comment_id,omitempty" form:"comment_id" `           // 要删除的评论id，在action_type=2的时候使用
+	CommentText string `json:"comment_text,omitempty" form:"comment_text" `       // 用户填写的评论内容，在action_type=1的时候使用
+	Token       string `json:"token" form:"token" binding:"required"`             // 用户鉴权token
+	VideoID     int64  `json:"video_id" form:"video_id" binding:"required"`       // 视频id
 }
 
 type ActionResponse struct {
@@ -21,8 +21,8 @@ type ActionResponse struct {
 }
 
 type ListRequest struct {
-	Token   string `json:"token"`    // 用户鉴权token
-	VideoID string `json:"video_id"` // 视频id
+	Token   string `json:"token" form:"token""`                         // 用户鉴权token
+	VideoID int64  `json:"video_id" form:"video_id" binding:"required"` // 视频id
 }
 
 type ListResponse struct {

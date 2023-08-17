@@ -1,11 +1,10 @@
 Env: dev # 环境，线上环境：prod、测试环境：dev
-BaseUrl: localhost:8080 # app域名，IP值需要查看自己的局域网
+BaseUrl: 192.168.88.1:8080 # app域名，IP值需要查看自己的局域网
 LogFile: static/logs/ # 日志文件
-videoPath: static/video/  # 根路径下的静态文件目录，可配置绝对路径
 
 # 数据库连接
 DB:
-  Url: username:password@tcp(localhost:3306)/vtiktok?charset=utf8mb4&parseTime=True&loc=Local
+  Url: root:28717774zkp@tcp(localhost:3306)/vtiktok?charset=utf8mb4&parseTime=True&loc=Local
   MaxIdleConns: 50
   MaxOpenConns: 200
 
@@ -13,3 +12,24 @@ Jwt:
   SignKey: v-tiktok-2023-signkey
   ExpireDays: 1
   Issuer: v-tiktok-2023-issuer
+
+# 上传配置
+Uploader:
+  # 上传方式，local和minio
+  Enable: minio
+  Local:
+    VideoPath: static/video/
+    ImagePath: static/pic/
+  Minio:
+    Host: http://192.168.88.131:9000/
+    Path: /mediafiles
+    Endpoint: centos:9000
+    AccessKeyID: vincent
+    SecretAccessKey: 28717774
+    UseSSL: false
+
+# redis连接
+Redis:
+  Url: redis://:28717774@centos:6379/0
+  Key: vtiktok
+  ExpireDays: 7

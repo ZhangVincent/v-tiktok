@@ -1,0 +1,3 @@
+time="2023-08-12T11:26:28+08:00" level=error msg="user's comment contains forbidden words1在操场跑步"
+time="2023-08-12T11:27:16+08:00" level=error msg="comment contains potential xss risk1 1"
+time="2023-08-12T11:34:58+08:00" level=error msg="comment contains potential xss risk2 1"

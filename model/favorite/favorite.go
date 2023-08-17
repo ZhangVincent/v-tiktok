@@ -11,9 +11,9 @@ import (
 )
 
 type ActionRequest struct {
-	ActionType string `json:"action_type"` // 1-点赞，2-取消点赞
-	Token      string `json:"token"`       // 用户鉴权token
-	VideoID    string `json:"video_id"`    // 视频id
+	ActionType string `json:"action_type" form:"action_type" binding:"required"` // 1-点赞，2-取消点赞
+	Token      string `json:"token" form:"token" binding:"required"`             // 用户鉴权token
+	VideoID    int64  `json:"video_id" form:"video_id" binding:"required"`       // 视频id
 }
 
 type ActionResponse struct {
@@ -21,8 +21,8 @@ type ActionResponse struct {
 }
 
 type ListRequest struct {
-	Token  string `json:"token"`   // 用户鉴权token
-	UserID string `json:"user_id"` // 用户id
+	Token  string `json:"token" form:"token" binding:"required"`     // 用户鉴权token
+	UserID int64  `json:"user_id" form:"user_id" binding:"required"` // 用户id
 }
 
 type ListResponse struct {

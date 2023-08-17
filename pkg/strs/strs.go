@@ -5,6 +5,7 @@
 package strs
 
 import (
+	"errors"
 	uuid "github.com/satori/go.uuid"
 	"strconv"
 	"strings"
@@ -90,10 +91,18 @@ func RuneLen(s string) int {
 	return len(bt)
 }
 
-func IEqualsA(i int64, s string) bool {
+func INotEqualsA(i int64, s string) bool {
 	return ItoA(i) != s
 }
 
 func ItoA(i int64) string {
 	return strconv.FormatInt(i, 10)
+}
+
+func AtoI(a string) (int64, error) {
+	parseInt, err := strconv.ParseInt(a, 10, 64)
+	if err != nil {
+		return 0, errors.New("string convert to int64 error")
+	}
+	return parseInt, nil
 }

@@ -5,12 +5,15 @@
 
 package publish
 
-import "v-tiktok/model/user"
+import (
+	"mime/multipart"
+	"v-tiktok/model/user"
+)
 
 type ActionRequest struct {
-	Token string `json:"token,omitempty"`
-	Data  []byte `json:"data,omitempty"`
-	Title string `json:"title,omitempty"`
+	Token string                `json:"token" form:"token" binding:"required"`
+	Data  *multipart.FileHeader `json:"data" form:"data" binding:"required"`
+	Title string                `json:"title" form:"title"`
 }
 
 type ActionResponse struct {
@@ -18,8 +21,8 @@ type ActionResponse struct {
 }
 
 type ListRequest struct {
-	Token  string `json:"token"`   // 用户鉴权token
-	UserID string `json:"user_id"` // 用户id
+	Token  string `json:"token" form:"token" binding:"required"`     // 用户鉴权token
+	UserID int64  `json:"user_id" form:"user_id" binding:"required"` // 用户id
 }
 
 type ListResponse struct {
