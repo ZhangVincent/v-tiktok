@@ -1,10 +1,10 @@
 Env: dev # 环境，线上环境：prod、测试环境：dev
-BaseUrl: 192.168.88.1:8080 # app域名，IP值需要查看自己的局域网
+BaseUrl: 127.0.0.1:8080 # app域名，IP值需要查看自己的局域网
 LogFile: static/logs/ # 日志文件
 
 # 数据库连接
 DB:
-  Url: root:28717774zkp@tcp(localhost:3306)/vtiktok?charset=utf8mb4&parseTime=True&loc=Local
+  Url: admin:password@tcp(localhost:3306)/vtiktok?charset=utf8mb4&parseTime=True&loc=Local
   MaxIdleConns: 50
   MaxOpenConns: 200
 
@@ -21,15 +21,15 @@ Uploader:
     VideoPath: static/video/
     ImagePath: static/pic/
   Minio:
-    Host: http://192.168.88.131:9000/
-    Path: /mediafiles
-    Endpoint: centos:9000
-    AccessKeyID: vincent
-    SecretAccessKey: 28717774
+    Host: http://127.0.0.1:9000/
+    Path: # 你自己的bucket
+    Endpoint: 127.0.0.1:9000
+    AccessKeyID: admin
+    SecretAccessKey: password
     UseSSL: false
 
 # redis连接
 Redis:
-  Url: redis://:28717774@centos:6379/0
+  Url: redis://:password@127.0.0.1:6379/0
   Key: vtiktok
   ExpireDays: 7

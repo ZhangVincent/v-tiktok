@@ -1,3 +1,7 @@
+// @description vtiktok唯一入口
+// @author zkp15
+// @date 2023/8/10 16:48
+
 package main
 
 import (
